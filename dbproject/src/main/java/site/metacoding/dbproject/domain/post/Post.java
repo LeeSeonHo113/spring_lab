@@ -11,8 +11,14 @@ import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 import site.metacoding.dbproject.domain.user.User;
 
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
 @Entity
 public class Post {
     @Id
