@@ -17,6 +17,7 @@ public class PostController {
 
     // 메인페이지
     // GET 글목록 페이지 /post/list, /
+    // @GetMapping({"/", "/post/list"})
     @GetMapping({ "/", "/post/list" })
     public String list() {
         return "post/list";
