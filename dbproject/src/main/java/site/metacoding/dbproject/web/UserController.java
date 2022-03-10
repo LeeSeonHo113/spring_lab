@@ -143,7 +143,6 @@ public class UserController {
         } else {
             return "error/page1";
         }
-
         // DB에 로그 남기기 (로그인 한 아이디)
     }
 
@@ -158,5 +157,4 @@ public class UserController {
     public String update(@PathVariable Integer id) {
         return "redirect:/user/" + id;
     }
-
 }
