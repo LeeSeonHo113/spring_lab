@@ -1,4 +1,4 @@
-{{>/layout/header}}
+{{> /layout/header}}
 
 <!-- 컨테이너 시작 -->
 <div class="container mt-3">
@@ -9,7 +9,8 @@
             <input type="text" class="form-control" placeholder="Enter username" name="username" id="username" required>
         </div>
         <div class="mb-3">
-            <input type="password" class="form-control" placeholder="Enter password" name="password" required>
+            <input type="password" class="form-control" placeholder="Enter password" name="password" required
+                maxlength="12">
         </div>
         <div class="mb-3">
             <input type="email" class="form-control" placeholder="Enter email" name="email">
@@ -23,19 +24,19 @@
 
 <script>
     async function usernameSameCheck(username) {
-        let response = await fetch(`api/user/username/same-check?username=${username}`);
+        let response = await fetch(`/api/user/username/same-check?username=${username}`);
         let responseJson = await response.json();
-
-        console.log(responseJson);
+        //console.log(responseJson);
+        if (responseJson.data == "있어") {
+            alert("해당 아이디를 사용할 수 없습니다.");
+            let prevUsername = $("#username").val().slice(0, -1);
+            $("#username").val(prevUsername);
+        }
     }
-
-    $("#username").keypress((event) => {
-        // console.log("글자 적었네?");
-        // console.log(event.target.value);
+    $("#username").keyup((event) => {
+        //console.log(event.target.value);
         usernameSameCheck(event.target.value);
     });
 </script>
 
-{{>/layout/footer}}
-$("#username").keypress((event) => {
-// console.log(event.target.value);
+{{> /layout/footer}}
