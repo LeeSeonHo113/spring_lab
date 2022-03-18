@@ -26,19 +26,23 @@ import site.metacoding.dbproject.domain.user.User;
 @NoArgsConstructor
 @Data
 @Entity
-@EntityListeners(AuditingEntityListener.class) // 현재시간 입력을 위해 필요한 어노테이션
+@EntityListeners(AuditingEntityListener.class)
 public class Post {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
     @Column(length = 300, nullable = false)
     private String title;
+
     @Lob // CLOB 4GB 문자 타입
     @Column(nullable = false)
     private String content;
+
     @JoinColumn(name = "userId")
     @ManyToOne(fetch = FetchType.EAGER)
     private User user;
+
     @CreatedDate // insert
     private LocalDateTime createDate;
     @LastModifiedDate // insert, update

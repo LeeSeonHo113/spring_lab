@@ -75,8 +75,8 @@ public class PostController {
 
         User principal = (User) session.getAttribute("principal");
 
-        if (principal == null) { // 로그인이 안 됐다는 뜻
-            return new ResponseDto<String>(-1, "로그인이 되지 않았습니다.", null);
+        if (principal == null) { // 로그인이 안됐다는 뜻
+            return new ResponseDto<String>(-1, "로그인이 되지 않았습니다", null);
         }
 
         Post postEntity = postService.글상세보기(id);
